@@ -305,7 +305,7 @@
   }
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2px;
   }
   .project-card {
@@ -635,6 +635,100 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  .project-card { text-decoration: none; color: inherit; }
+  .project-card:nth-child(4) .project-card-bg {
+    background: linear-gradient(135deg, #C9A9A0 0%, #8E6B63 100%);
+  }
+
+  /* CASE STUDIES */
+  .cases { margin-top: 120px; }
+  .case {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    padding: 72px 0;
+    border-top: 1px solid var(--clay-light);
+    scroll-margin-top: 90px;
+  }
+  .case-kicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 16px;
+  }
+  .case-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .case-title em { font-style: italic; color: var(--clay-dark); }
+  .case-facts { display: flex; flex-direction: column; gap: 22px; }
+  .case-fact h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay-dark);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .case-fact p, .case-fact li {
+    font-size: 0.83rem;
+    line-height: 1.7;
+    color: var(--mid);
+    font-weight: 300;
+  }
+  .case-fact ul { list-style: none; }
+  .case-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .case-steps { list-style: none; display: flex; flex-direction: column; gap: 2px; background: var(--clay-light); margin-bottom: 40px; }
+  .case-steps li {
+    background: var(--soft);
+    padding: 22px 26px;
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: var(--mid);
+    font-weight: 300;
+  }
+  .case-steps strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .case-learned { border-left: 2px solid var(--accent); padding-left: 22px; max-width: 60ch; }
+  .case-learned h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .case-learned p { font-size: 0.9rem; line-height: 1.75; color: var(--mid); font-weight: 300; }
+  .case-back {
+    display: inline-block;
+    margin-top: 28px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+  }
+  .case-back:hover { color: var(--accent); border-color: var(--accent); }
+
   /* RESPONSIVE */
   @media(max-width: 900px) {
     nav { padding: 20px 28px; }
@@ -642,6 +736,8 @@
     #home { grid-template-columns: 1fr; }
     .hero-right { display: none; }
     .projects-grid { grid-template-columns: 1fr; }
+    .case { grid-template-columns: 1fr; gap: 32px; padding: 56px 0; }
+    .cases { margin-top: 72px; }
     .process-grid { grid-template-columns: 1fr 1fr; }
     .about-layout { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
@@ -693,7 +789,7 @@
         <span class="stat-label">Years UX Design</span>
       </div>
       <div class="stat">
-        <span class="stat-num">3</span>
+        <span class="stat-num">4</span>
         <span class="stat-label">Case Studies</span>
       </div>
       <div class="stat">
@@ -745,7 +841,7 @@
   <div class="projects-grid reveal">
 
     <!-- Project 1 -->
-    <div class="project-card">
+    <a class="project-card" href="#case-journey">
       <div class="project-card-bg"></div>
       <div class="project-icon">🗺️</div>
       <div class="project-overlay"></div>
@@ -758,26 +854,26 @@
           for service improvement.
         </p>
       </div>
-    </div>
+    </a>
 
     <!-- Project 2 -->
-    <div class="project-card">
+    <a class="project-card" href="#case-preschool">
       <div class="project-card-bg"></div>
       <div class="project-icon">🌱</div>
       <div class="project-overlay"></div>
       <span class="project-arrow">↗</span>
       <div class="project-content">
-        <span class="project-tag">Web Design · Accessibility</span>
+        <span class="project-tag">Web Design · Usability</span>
         <h3 class="project-name">Kindergarten Website Redesign</h3>
         <p class="project-desc">
-          Designed an inclusive, parent-friendly website for a Gothenburg preschool with focus on
-          clarity and accessibility.
+          Designed a mobile-first website for a Gothenburg preschool with focus on usability,
+          simple navigation and low maintenance.
         </p>
       </div>
-    </div>
+    </a>
 
     <!-- Project 3 — LIA highlight -->
-    <div class="project-card">
+    <a class="project-card" href="#case-kpengar">
       <div class="project-card-bg"></div>
       <div class="project-icon">🎭</div>
       <div class="project-overlay"></div>
@@ -790,8 +886,119 @@
           intuitive digital experience. Delivered at Kulturungdom, Göteborg.
         </p>
       </div>
-    </div>
+    </a>
 
+    <!-- Project 4 -->
+    <a class="project-card" href="#case-togo">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">📱</div>
+      <div class="project-overlay"></div>
+      <span class="project-arrow">↗</span>
+      <div class="project-content">
+        <span class="project-tag">Mobile App · Usability Testing</span>
+        <h3 class="project-name">Västtrafik To-Go Redesign</h3>
+        <p class="project-desc">
+          Redesigned a public transport app after usability tests revealed four key problems,
+          then tested prototypes and refined the design with user feedback.
+        </p>
+      </div>
+    </a>
+
+  </div>
+  <!-- CASE STUDIES -->
+  <div class="cases">
+  <article class="case reveal" id="case-togo">
+    <div class="case-side">
+      <p class="case-kicker">Case study · Mobile app</p>
+      <h3 class="case-title">Västtrafik <em>To-Go</em> Redesign</h3>
+      <div class="case-facts">
+        <div class="case-fact"><h4>Roles</h4><p>UX Researcher, UX/UI Designer, Scrum Master</p></div>
+        <div class="case-fact"><h4>Methods</h4><ul><li>User survey and interviews</li><li>Personas</li><li>Scrum, design thinking</li><li>Wireframes, user flows, prototype</li><li>Usability testing</li></ul></div>
+        <div class="case-fact"><h4>Tools</h4><p>Figma · Trello</p></div>
+      </div>
+      <a href="#projects" class="case-back">↑ All projects</a>
+    </div>
+    <div class="case-main">
+      <p class="case-lead">A redesign of Västtrafik's To-Go app, used to plan journeys and buy tickets for bus, tram and train in Västra Götaland. I found where users got stuck and designed solutions that I tested in prototypes.</p>
+      <ol class="case-steps">
+        <li><strong>Empathize</strong>We ran surveys and interviews, and created personas for current users and for people hesitant to use public transport.</li>
+        <li><strong>Define</strong>Usability tests of the existing app showed four problems: no “Student Ticket” option, unclear rules for bringing a bike, a confusing mix of internal and Google maps, and too much text that made navigation hard.</li>
+        <li><strong>Ideate</strong>We moved from low-fidelity to mid-fidelity wireframes and then to high-fidelity wireframes.</li>
+        <li><strong>Prototype &amp; test</strong>Testers preferred the redesign but struggled to spot the bike icons. We traced this to the black-and-white mid-fidelity version and added colour in the next round.</li>
+        <li><strong>Final design</strong>Testers gave positive feedback in all three scenarios. We made small changes to colours and navigation flows before presenting.</li>
+      </ol>
+      <div class="case-learned"><h4>What I learned</h4><p>Working in sprints within a team takes structure, and clear communication and shared responsibility make time pressure manageable. I also practised building low-, mid- and high-fidelity wireframes and interactive prototypes in Figma.</p></div>
+    </div>
+  </article>
+  <article class="case reveal" id="case-preschool">
+    <div class="case-side">
+      <p class="case-kicker">Case study · Web design</p>
+      <h3 class="case-title">Småtrollen <em>preschool</em> website</h3>
+      <div class="case-facts">
+        <div class="case-fact"><h4>Client</h4><p>Two representatives from the parents’ council of a parent cooperative preschool</p></div>
+        <div class="case-fact"><h4>Team &amp; time</h4><p>Four people, two weeks</p></div>
+        <div class="case-fact"><h4>Roles</h4><p>UX Researcher, UX/UI Designer</p></div>
+        <div class="case-fact"><h4>Methods</h4><ul><li>Heuristic evaluation</li><li>Competitor analysis</li><li>Scrum, design thinking</li><li>Crazy 8 sketching</li><li>Wireframes, user flows, prototype</li></ul></div>
+        <div class="case-fact"><h4>Tools</h4><p>Figma · Trello</p></div>
+      </div>
+      <a href="#projects" class="case-back">↑ All projects</a>
+    </div>
+    <div class="case-main">
+      <p class="case-lead">A new mobile website for the preschool Småtrollen, built around usability, easy navigation and minimal maintenance. The client wanted a warm, genuine small-scale feel with lots of nature pictures, a sense of security, and a site that doesn’t need updating for years.</p>
+      <ol class="case-steps">
+        <li><strong>Heuristic evaluation</strong>I reviewed the old site against four heuristics: visibility of system status, match between system and reality, consistency and standards, and aesthetics and minimalist design. This showed its flaws and strengths.</li>
+        <li><strong>Ideate</strong>We used Crazy 8 to produce many sketches quickly and voted on a direction to start from.</li>
+        <li><strong>Theme, colours and pictures</strong>The old material was not usable, so we used our own photos of the preschool and the children’s activities. Based on the client’s taste, we chose the logo, colours and fonts.</li>
+        <li><strong>Final prototype</strong>With only two weeks, we skipped usability testing and went straight to high-fidelity wireframes. We designed some new views and reworked the old ones, using warm colours, more images and easy-to-read information.</li>
+      </ol>
+      <div class="case-learned"><h4>What I learned</h4><p>User testing is essential, and I would test with a focus group if I did this again. I also learned that time planning is harder than expected, and that time pressure can limit creativity.</p></div>
+    </div>
+  </article>
+  <article class="case reveal" id="case-journey">
+    <div class="case-side">
+      <p class="case-kicker">Case study · UX research</p>
+      <h3 class="case-title">Customer Journey Map: <em>Christmas</em> grocery shopping</h3>
+      <div class="case-facts">
+        <div class="case-fact"><h4>Roles</h4><p>UX Researcher, UX/UI Designer</p></div>
+        <div class="case-fact"><h4>Methods</h4><ul><li>User survey (17 responses)</li><li>Four user interviews</li><li>Observation in store</li><li>Personas</li><li>Customer journey map</li></ul></div>
+        <div class="case-fact"><h4>Tools</h4><p>Google Forms · Trello</p></div>
+      </div>
+      <a href="#projects" class="case-back">↑ All projects</a>
+    </div>
+    <div class="case-main">
+      <p class="case-lead">Research into how people shop for groceries before Christmas, summarised in a customer journey map that shows their frustrations and needs.</p>
+      <ol class="case-steps">
+        <li><strong>Survey</strong>We collected 17 questionnaire responses in Google Forms to understand the customer journey and the needs behind it.</li>
+        <li><strong>Interviews &amp; observation</strong>The survey results shaped our interview questions. We held four interviews and followed customers through the store while they did their usual shopping, recording what they did to find patterns.</li>
+        <li><strong>Personas</strong>The survey showed who the users in this group were, and we created personas for the different user types.</li>
+        <li><strong>Journey map</strong>We mapped customers’ needs and expectations at each stage, identified pain points and pointed out where the experience could be improved.</li>
+      </ol>
+      <div class="case-learned"><h4>What I learned</h4><p>A journey map exposes needs and pain points that can guide later design work. I also learned to organise a UX project with a Trello backlog and time estimates in an agile way.</p></div>
+    </div>
+  </article>
+  <article class="case reveal" id="case-kpengar">
+    <div class="case-side">
+      <p class="case-kicker">Case study · LIA at Kulturungdom</p>
+      <h3 class="case-title">K-pengar <em>Application</em> Flow</h3>
+      <div class="case-facts">
+        <div class="case-fact"><h4>Role</h4><p>UX/UI Designer (LIA), Kulturungdom, Göteborg, 2024–2025</p></div>
+        <div class="case-fact"><h4>Methods</h4><ul><li>User testing</li><li>Prototyping in Figma</li><li>Agile teamwork</li></ul></div>
+        <div class="case-fact"><h4>Tools</h4><p>Figma</p></div>
+        <div class="case-fact"><h4>Team</h4><p>Developers and product owners</p></div>
+      </div>
+      <a href="#projects" class="case-back">↑ All projects</a>
+    </div>
+    <div class="case-main">
+      <p class="case-lead">K-pengar is a funding application for young cultural practitioners, built on a complex set of rules. I simplified it into a clear and intuitive digital experience.</p>
+      <ol class="case-steps">
+        <li><strong>Problem</strong>A complex, rule-based application flow that was hard for young applicants to understand and complete.</li>
+        <li><strong>Process</strong>I conducted user testing and translated the insights into prototypes in Figma, working agilely with developers and product owners.</li>
+        <li><strong>Also at Kulturungdom</strong>I modernised the Filmplats website with a focus on accessibility and WCAG.</li>
+      </ol>
+      <!-- Add a concrete result here, e.g. what user tests showed and what you changed. -->
+      <div class="case-learned"><h4>What I learned</h4><p>Working in a real agile team taught me to turn user insights into solutions that developers and product owners can build on.</p></div>
+    </div>
+  </article>
   </div>
 </section>
 
